@@ -1,0 +1,172 @@
+body {
+    margin: 0;
+    background-color: #b6d9ae;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+nav {
+    grid-row: 4;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: row wrap;
+}
+
+
+nav li {
+    padding: 0 10px;
+    border-right: solid 2px black;
+   
+}
+
+nav li:last-child {
+    border: none;
+}
+
+
+
+nav a {
+    text-decoration: none;
+    color: #492ea3;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+
+header {
+/* TURN ON GRID    */
+    display: grid;
+/* define grid and row   */
+    grid-template-rows: 3fr auto 100px auto 2fr;
+    /* make sure header full height .. to let grid use  full height*/
+    height: 100vh;
+/* centre everything */
+    justify-items: center;
+}
+
+
+h1 {
+    grid-row: 3;
+    border-top: solid 1px;
+    padding-top: 30px;
+    margin: 0;
+    font-style: oblique;
+    color: #1d1d86;
+    font-size: 2em;
+}
+
+/* robot */
+
+
+.robot {
+    border: 1px solid blue;
+    grid-row: 2;
+/* posstion container ,so child element are possitioned inside the container   */
+    position: relative;
+    /* name duration counting easecurve(to give ease) */
+    animation: wobble 2s infinite linear;
+    transform-origin: bottom;
+}
+
+.robot-body {
+    z-index: 10;
+    position: relative;
+}
+
+.eye {
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    /*div is a racktangle so giv a shape circle to div use border-radius */
+    border-radius: 50%;
+    position: absolute;
+    top: 65px;
+    z-index: 20;
+    animation: blink 2.4s infinite;
+
+}
+
+.arm {
+/*  so we can put hands behind body  */
+    position: absolute;
+    /* with possition absolute u can use top bottom left rgt default*/
+    top: 140px;
+  
+
+}
+
+.arm.left {
+    left: 25px;
+      animation: wave 2s infinite;
+     transform-origin:top left;
+   
+}
+
+.arm.right {
+    left: 205px;
+      animation: wave 2s infinite;
+   transform-origin: top right;
+}
+
+
+.eyeleft {
+    left: 124px;
+    animation-delay: 1s;
+}
+
+.eyeright {
+    left: 161px;
+  
+}
+
+
+/* animation */
+
+/* wobble is the name of keyframe i m giving */
+@keyframes wobble {
+
+    0%,
+    100% {
+        transform: rotate(5deg);
+    }
+
+    50% {
+        transform: rotate(-5deg);
+    }
+}
+
+
+/* arms wave */
+
+@keyframes wave {
+
+    0%,
+    100% {
+        transform: rotate(10deg);
+    }
+
+    50% {
+        transform: rotate(-10deg);
+    }
+}
+
+
+/* for eyes */
+
+@keyframes blink {
+
+    0%,
+    100% {
+        background-color: red;
+    }
+
+    50% {
+        background-color: yellow;
+    }
+}
